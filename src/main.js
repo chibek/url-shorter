@@ -9,6 +9,9 @@ import {
 import App from "./App.vue";
 import "./assets/css/main.css";
 import {dayMonthBeauty} from "./utils/dates";
+import {createRouter} from "./router";
+
+const router = createRouter();
 
 //Http connection to the API
 const httpLink = createHttpLink({
@@ -30,7 +33,7 @@ const app = createApp({
 
   render: () => h(App),
 });
-
+app.use(router);
 app.config.globalProperties.$filters = {
   dayMonthBeauty,
 };
