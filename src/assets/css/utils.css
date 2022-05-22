@@ -1,0 +1,18 @@
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='number'],
+input[type='url'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='week'],
+input[type='time'],
+input[type='search'],
+input[type='tel'] {
+    @apply h-10 w-full text-gray-600 select-none rounded-lg bg-gray-200 px-2 placeholder-transparent focus:outline-none border-none focus:ring-0
+}
+
+.float-label {
+    @apply absolute left-0 -top-4 select-none text-xs text-gray-400 transition-all peer-placeholder-shown:left-2 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:-top-4 peer-focus:left-0 peer-focus:text-xs cursor-text;
+}
