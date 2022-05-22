@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.4",
+    "@headlessui/vue": "^1.6.2",
     "@vue/apollo-composable": "^4.0.0-alpha.17",
     "dayjs": "^1.11.2",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
@@ -25,6 +27,7 @@
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",
     "tailwindcss": "^3.0.24",
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "vite-svg-loader": "^3.3.0"
   }
 }
