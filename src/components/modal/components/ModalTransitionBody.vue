@@ -1,0 +1,17 @@
+<template>
+    <TransitionChild
+        as="div"
+        enter="duration-300 ease-out delay-300"
+        enter-from="opacity-0 scale-95"
+        enter-to="opacity-100 scale-100"
+        leave="duration-200 ease-in"
+        leave-from="opacity-100 scale-100"
+        leave-to="opacity-0 scale-95"
+    >
+        <slot></slot>
+    </TransitionChild>
+</template>
+
+<script setup>
+import { TransitionChild } from '@headlessui/vue';
+</script>
