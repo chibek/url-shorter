@@ -1,13 +1,16 @@
 <template>
-  <section class="flex flex-col space-y-2 p-6 select-none" v-if="!urlLoading">
+  <section class="flex select-none flex-col space-y-2 p-6" v-if="!urlLoading">
     <div class="flex items-center justify-between">
       <h2 class="text-xl font-bold">{{ url.name }}</h2>
-      <button
-        class="trans-all flex cursor-pointer space-x-2 rounded-lg p-2 hover:bg-gray-200 hover:text-orange-400 border shadow-lg"
-      >
-        <Icon name="pencil" class="h-5 w-5" />
-        <span>Edit</span>
-      </button>
+      <ModalUpdateUrl :url="url" v-slot="{open}">
+        <button
+			@click="open"
+          class="trans-all flex cursor-pointer space-x-2 rounded-lg border p-2 shadow-lg hover:bg-gray-200 hover:text-orange-400"
+        >
+          <Icon name="pencil" class="h-5 w-5" />
+          <span>Edit</span>
+        </button>
+      </ModalUpdateUrl>
     </div>
     <span>{{ url.created_at }}</span>
     <LinkRedirect @copy="copy($event)" :url="url" />
@@ -16,12 +19,7 @@
       <span>Destination:</span>
     </div>
     <div>
-      <a
-        class="ml-5"
-        target="_blank"
-        :href="url.longUrl"
-        >{{ url.longUrl }}</a
-      >
+      <a class="ml-5" target="_blank" :href="url.longUrl">{{ url.longUrl }}</a>
     </div>
     <div class="flex flex-col">
       <div class="flex items-end space-x-1">
@@ -40,9 +38,10 @@
 import { useLazyQuery } from "@vue/apollo-composable";
 import { CONTEXT_URL_BY_ID } from "../api/context-url";
 import { computed, reactive, watchEffect } from "vue";
-import Icon from "../components/icon/Icon.vue";
-import LinkRedirect from "../modules/link/LinkRedirect.vue";
+import Icon from "@/components/icon/Icon.vue";
+import LinkRedirect from "@/modules/link/LinkRedirect.vue";
 import useClipboard from "../composables/useClipboard.js";
+import ModalUpdateUrl from "@/modules/link/ModalUpdateUrl.vue";
 
 const props = defineProps(["id"]);
 const { copy } = useClipboard();
