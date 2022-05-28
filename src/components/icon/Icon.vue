@@ -14,7 +14,7 @@ export default defineComponent({
             type: String,
             validator: (value) =>
                 ['stroke', 'fill', 'stroke-fill', 'none'].includes(value),
-            default: 'stroke',
+            default: 'fill',
         },
     },
     setup(props) {
