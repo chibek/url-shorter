@@ -15,7 +15,7 @@ const routes = Object.keys(pages).map((path) => {
   }
   return {
     path: name === "/home" ? "/" : name,
-    name: name,
+    name: name.replace("/", ""),
     component: pages[path], // () => import('./pages/*.vue')
   };
 });
@@ -27,8 +27,8 @@ routes.push({
 routes.push({
   path: "/link/:url",
   name: "link",
-  props:(route) => ({
-    ...route.params
+  props: (route) => ({
+    ...route.params,
   }),
   component: () => import("./pages/Link.vue"),
 });
