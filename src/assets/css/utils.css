@@ -16,3 +16,11 @@ input[type='tel'] {
 .float-label {
     @apply absolute left-0 -top-4 select-none text-xs text-gray-400 transition-all peer-placeholder-shown:left-2 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:-top-4 peer-focus:left-0 peer-focus:text-xs cursor-text;
 }
+
+.trans-all {
+    @apply transition-all ease-in-out duration-500;
+}
+
+.default-overlay {
+    @apply fixed bg-orange-100 bg-opacity-30 backdrop-blur-sm h-full w-full;
+}
