@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav class="flex justify-between whitespace-nowrap p-3 font-bold">
+  <div class="relative">
+    <nav class="flex justify-between whitespace-nowrap p-3 font-bold  ">
       <span>{{ urls.length }} Result</span>
       <span>Click all time</span>
     </nav>
@@ -11,25 +11,26 @@
       :url="url"
       :active-id="activeUrlId"
     />
+	<ModalCreateUrl/>
   </div>
 </template>
 
 <script setup>
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import SidebarItem from "./SidebarItem.vue";
+import ModalCreateUrl from "./ModalCreateUrl.vue";
 
 const props = defineProps(["urls", "loading"]);
 const router = useRouter();
 const activeUrlId = ref(null);
 
-onMounted(() =>{
-	setActiveUrl(props.urls[0]);
+onMounted(() => {
+  setActiveUrl(props.urls[0]);
 });
 
 const setActiveUrl = (url) => {
   activeUrlId.value = url.id;
   router.push({ name: "link", params: { url: url.shortUrl, id: url.id } });
 };
-
 </script>

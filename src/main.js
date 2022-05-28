@@ -8,6 +8,7 @@ import {
 
 import App from "./App.vue";
 import "./assets/css/main.css";
+import "./assets/css/utils.css";
 import {dayMonthBeauty} from "./utils/dates";
 import {createRouter} from "./router";
 

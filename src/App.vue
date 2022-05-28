@@ -23,7 +23,6 @@
   </section>
   <section class="flex h-full items-center justify-center" v-else>
     <span>Loading...</span>
-    {{ loading }}
   </section>
 </template>
 <script setup>
