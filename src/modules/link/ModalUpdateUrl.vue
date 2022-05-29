@@ -63,15 +63,15 @@ import { CONTEXT_URL, CONTEXT_URL_UPDATE } from "@/api/context-url";
 import { useMutation } from "@vue/apollo-composable";
 
 const open = () => {
+	resetForm({
+		values: {
+			name: props.url.name,
+			longUrl: props.url.longUrl,
+		},
+	});
   isOpen.value = true;
 };
 const close = () => {
-  resetForm({
-    values: {
-      name: props.url.name,
-      longUrl: props.url.longUrl,
-    },
-  });
   isOpen.value = false;
 };
 const isOpen = ref(false);

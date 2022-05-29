@@ -7,14 +7,13 @@
       <span class="text-xs text-gray-500">{{
         $filters.dayMonthBeauty(url.created_at)
       }}</span>
-      <span>{{ url.clicks }}</span>
+      <span>{{ clicks }}</span>
     </div>
     <span class="font-semibold">{{ url.name }}</span>
     <div class="flex justify-between">
-      <a
-        :href="url.shortUrl"
-        class="cursor-pointer text-orange-300 underline decoration-orange-300"
-        >{{ url.shortUrl }}</a
+      <span
+        class="text-orange-300 underline decoration-orange-300"
+        >{{ url.shortUrl }}</span
       >
       <Icon
         name="trash"
@@ -28,25 +27,31 @@
 <script setup>
 import { computed } from "vue";
 import Icon from "@/components/icon/Icon.vue";
-import { useMutation } from "@vue/apollo-composable";
-import { CONTEXT_URL_DELETE } from "@/api/context-url";
-import { CONTEXT_URL } from "../../../api/context-url";
+import { useMutation, useSubscription } from "@vue/apollo-composable";
+import {
+  CONTEXT_URL_SUBSCRPTION,
+  CONTEXT_URL_DELETE,
+  CONTEXT_URL,
+} from "@/api/context-url";
 
 const props = defineProps({ url: Object, activeId: String });
 const isActive = computed(() => props.url?.id === props.activeId);
-const { mutate: deleteLink, onDone } = useMutation(CONTEXT_URL_DELETE,{
-	refetchQueries: [
-		CONTEXT_URL,
-	],
+const { mutate: deleteLink } = useMutation(CONTEXT_URL_DELETE, {
+  refetchQueries: [{ query: CONTEXT_URL }],
 });
+const { result: getClicks } = useSubscription(CONTEXT_URL_SUBSCRPTION, {
+  id: props.url.id,
+});
+
+const clicks = computed(
+  () => getClicks.value?.clickUpdate?.clicks ?? props.url.clicks
+);
 
 const deleteUrl = () => {
   if (confirm("Do you really want to delete?")) {
-    deleteLink(
-      {
-        input: props.url.id,
-      }
-    );
+    deleteLink({
+      input: props.url.id,
+    });
   }
 };
 </script>

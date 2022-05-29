@@ -1,6 +1,8 @@
 <template>
-  <div class="relative">
-    <nav class="flex justify-between whitespace-nowrap p-3 font-bold">
+  <div class="relative max-h-full overflow-y-auto">
+    <nav
+      class="sticky top-0 flex justify-between whitespace-nowrap bg-gray-200 p-3 font-bold"
+    >
       <span>{{ urls.length }} Result</span>
       <span>Click all time</span>
     </nav>
@@ -12,13 +14,15 @@
       :active-id="activeUrlId"
     />
     <ModalCreateUrl v-slot="{ open }">
-      <button
-        @click="open"
-        class="trans-all absolute bottom-4 left-4 flex cursor-pointer items-center space-x-2 rounded-lg border p-2 shadow-lg hover:bg-gray-200 hover:text-orange-400"
-      >
-        <Icon name="plus" class="h-4 w-4" />
-        <span>Add new url</span>
-      </button>
+      <div class="sticky bottom-0 bg-white p-4">
+        <button
+          @click="open"
+          class="trans-all left-4 flex cursor-pointer items-center space-x-2 rounded-lg border p-2 shadow-lg hover:bg-gray-200 hover:text-orange-400"
+        >
+          <Icon name="plus" class="h-4 w-4" />
+          <span>Add new url</span>
+        </button>
+      </div>
     </ModalCreateUrl>
   </div>
 </template>
