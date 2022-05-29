@@ -80,3 +80,12 @@ export const CONTEXT_URL_DELETE = gql`
     delete(id: $input)
   }
 `;
+
+export const CONTEXT_URL_SUBSCRPTION = gql`
+  subscription ($id: String!) {
+    clickUpdate(id: $id) {
+      id
+      clicks
+    }
+  }
+`;
