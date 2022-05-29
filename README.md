@@ -2,7 +2,7 @@
 
 ## Plugins
 
-⚡️ Vue3, Vite, 
+⚡️ Vue3, Vite, vitest
 
 🎨 Tailwindcss, HeadlesUi, chartjs
 
@@ -20,3 +20,9 @@ Just run and visit http://localhost:3000/
 <pre>
 npm run dev
 </pre>
+  
+## Run test
+<pre>
+npm run test
+</pre>
+
